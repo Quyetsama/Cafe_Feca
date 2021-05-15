@@ -72,42 +72,6 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'abc|AnyCPU'">
-    <OutputPath>bin\abc\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'abc|x64'">
-    <OutputPath>bin\x64\abc\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'abc|x86'">
-    <OutputPath>bin\x86\abc\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'bca|AnyCPU'">
-    <OutputPath>bin\bca\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'bca|x64'">
-    <OutputPath>bin\x64\bca\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'bca|x86'">
-    <OutputPath>bin\x86\bca\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'gfdg|AnyCPU'">
-    <OutputPath>bin\gfdg\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'gfdg|x64'">
-    <OutputPath>bin\x64\gfdg\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'gfdg|x86'">
-    <OutputPath>bin\x86\gfdg\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'csdvadsv|AnyCPU'">
-    <OutputPath>bin\csdvadsv\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'csdvadsv|x64'">
-    <OutputPath>bin\x64\csdvadsv\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'csdvadsv|x86'">
-    <OutputPath>bin\x86\csdvadsv\</OutputPath>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -122,6 +86,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill.cs" />
+    <Compile Include="BillInfo.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

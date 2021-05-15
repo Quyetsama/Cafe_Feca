@@ -77,10 +77,75 @@ namespace cafe_cafe
             }
         }
 
+        void showBill(int id)
+        {
+            lvBill.Items.Clear();
+
+            //// get bill chưa thanh toan
+            //DataTable dataBill = DataProvider.Instance.ExecuteQuery("select * from Bill where idTable = " + id + "and status = 0");
+
+            //int billID = -1;
+
+            //if(dataBill.Rows.Count > 0)
+            //{
+            //    Bill bill = new Bill(dataBill.Rows[0]);
+            //    billID = bill.ID;
+            //}
+
+            List<BillInfo> listBillInfo = new List<BillInfo>();
+            //label1.Text = billID.ToString();
+
+            string query = "select f.name, bi.count, f.price, f.price*bi.count as totalPrice from Bill as b, BillInfo as bi, Food as f where bi.idBill = b.id and bi.idFood = f.id and b.idTable = " + id;
+            DataTable dataBillInfo = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach(DataRow row in dataBillInfo.Rows)
+            {
+                BillInfo info = new BillInfo(row);
+                listBillInfo.Add(info);
+            }
+
+
+            foreach(BillInfo item in listBillInfo)
+            {
+                ListViewItem lvItem = new ListViewItem(item.NameFood.ToString());
+                lvItem.SubItems.Add(item.Count.ToString());
+                lvItem.SubItems.Add(item.Price.ToString());
+                lvItem.SubItems.Add(item.TotalPrice.ToString());
+
+                lvBill.Items.Add(lvItem);
+            }
+
+
+
+            //DataTable dataBillInfo = DataProvider.Instance.ExecuteQuery("select * from BillInfo where idBill = " + billID);
+
+            //foreach (DataRow row in dataBillInfo.Rows)
+            //{
+            //    BillInfo info = new BillInfo(row);
+            //    listBillInfo.Add(info);
+            //}
+
+
+            //foreach (BillInfo item in listBillInfo)
+            //{
+            //    ListViewItem lvItem = new ListViewItem(item.IdFood.ToString());
+            //    lvItem.SubItems.Add(item.Count.ToString());
+
+            //    lvBill.Items.Add(lvItem);
+            //}
+
+        }
+
         private void lvTable_Click(object sender, EventArgs e)
         {
             string a = lvTable.SelectedItems[0].SubItems[1].Text;
-            label1.Text = a.ToString();
+            //label1.Text = a.ToString();
+            showBill(Int32.Parse(a));
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

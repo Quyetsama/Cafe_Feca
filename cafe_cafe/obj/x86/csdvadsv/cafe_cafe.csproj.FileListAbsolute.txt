@@ -1,8 +1,9 @@
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\bin\x86\csdvadsv\cafe_cafe.exe.config
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\bin\x86\csdvadsv\cafe_cafe.exe
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.Login.resources
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.Main.resources
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.Properties.Resources.resources
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.csproj.GenerateResource.cache
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.csproj.CoreCompileInputs.cache
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.exe
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\bin\x86\csdvadsv\cafe_cafe.exe.config
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\bin\x86\csdvadsv\cafe_cafe.exe
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.csprojAssemblyReference.cache
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.Login.resources
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.Main.resources
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.Properties.Resources.resources
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.csproj.GenerateResource.cache
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.csproj.CoreCompileInputs.cache
+C:\Users\vanqu\source\repos\Cafe_Feca\cafe_cafe\obj\x86\csdvadsv\cafe_cafe.exe

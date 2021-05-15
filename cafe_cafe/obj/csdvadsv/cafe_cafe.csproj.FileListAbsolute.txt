@@ -1,9 +1,0 @@
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\bin\csdvadsv\cafe_cafe.exe.config
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\bin\csdvadsv\cafe_cafe.exe
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\csdvadsv\cafe_cafe.Login.resources
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\csdvadsv\cafe_cafe.Main.resources
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\csdvadsv\cafe_cafe.Properties.Resources.resources
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\csdvadsv\cafe_cafe.csproj.GenerateResource.cache
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\csdvadsv\cafe_cafe.csproj.CoreCompileInputs.cache
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\csdvadsv\cafe_cafe.exe
-C:\Users\vanqu\source\repos\cafe_cafe\cafe_cafe\obj\csdvadsv\cafe_cafe.csprojAssemblyReference.cache
