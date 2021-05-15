@@ -95,7 +95,7 @@ namespace cafe_cafe
             List<BillInfo> listBillInfo = new List<BillInfo>();
             //label1.Text = billID.ToString();
 
-            string query = "select f.name, bi.count, f.price, f.price*bi.count as totalPrice from Bill as b, BillInfo as bi, Food as f where bi.idBill = b.id and bi.idFood = f.id and b.idTable = " + id;
+            string query = "select f.name, bi.count, f.price, f.price*bi.count as totalPrice from Bill as b, BillInfo as bi, Food as f where bi.idBill = b.id and bi.idFood = f.id and b.status = 0 and b.idTable = " + id;
             DataTable dataBillInfo = DataProvider.Instance.ExecuteQuery(query);
 
             foreach(DataRow row in dataBillInfo.Rows)
