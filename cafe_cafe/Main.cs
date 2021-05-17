@@ -14,6 +14,10 @@ namespace cafe_cafe
 {
     public partial class Main : Form
     {
+
+        public static int IDTable = 0;
+        public static string IDFOOD = "";
+
         public Main()
         {
             InitializeComponent();
@@ -74,6 +78,8 @@ namespace cafe_cafe
 
         void LoadTable()
         {
+            lvTable.Items.Clear();
+
             List<Table> tablelist = new List<Table>();
 
             DataTable data = DataProvider.Instance.ExecuteQuery("exec USP_GetTableList");
@@ -194,6 +200,8 @@ namespace cafe_cafe
             string a = lvTable.SelectedItems[0].SubItems[1].Text;
             //label1.Text = a.ToString();
             showBill(Int32.Parse(a));
+
+            IDTable = Int32.Parse(a);
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -232,10 +240,56 @@ namespace cafe_cafe
             {
                 datagridFood.CurrentRow.Selected = true;
                 txtFood.Text = datagridFood.Rows[e.RowIndex].Cells["name"].FormattedValue.ToString();
+
+                // luu id food
+                IDFOOD = datagridFood.Rows[e.RowIndex].Cells["id"].FormattedValue.ToString();
             }
             catch(Exception ex)
             {
             }
+        }
+
+        private void btnThemMon_Click(object sender, EventArgs e)
+        {
+            // get bill chưa thanh toan
+            DataTable dataBill = DataProvider.Instance.ExecuteQuery("select * from Bill where idTable = " + IDTable + "and status = 0");
+
+            int billID = -1;
+
+            if (dataBill.Rows.Count > 0)
+            {
+                Bill bill = new Bill(dataBill.Rows[0]);
+                billID = bill.ID;
+
+                
+            }
+
+            string idFood = IDFOOD;
+            int count = (int)numericUpDown1.Value;
+
+            // neu billID = -1, nghia la ban do chua co bill va phai them bill moi
+            if (billID == -1)
+            {
+                // Insert Bill
+                DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[]{ IDTable });
+
+                //lay id cuoi cung de insert billinfo
+                int idBill = (int)DataProvider.Instance.ExecuteScalar("SELECT TOP 1 * FROM Bill ORDER BY id DESC");
+                
+
+                // Insert BillInfo
+                DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillInfo @idBill , @idFood , @count , @idTable", new object[]{idBill, idFood , count, IDTable });
+
+                
+            }
+            else
+            {
+                DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillInfo @idBill , @idFood , @count , @idTable", new object[]{billID, idFood, count, IDTable });
+            }
+
+            LoadTable();
+            showBill(IDTable);
+
         }
     }
 }

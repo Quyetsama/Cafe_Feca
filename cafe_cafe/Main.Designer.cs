@@ -39,6 +39,9 @@ namespace cafe_cafe
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.datagridFood = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtFood = new System.Windows.Forms.TextBox();
@@ -49,9 +52,6 @@ namespace cafe_cafe
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.btnThemMon = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.datagridFood)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -119,6 +119,8 @@ namespace cafe_cafe
             // 
             this.datagridFood.AllowUserToAddRows = false;
             this.datagridFood.AllowUserToDeleteRows = false;
+            this.datagridFood.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.datagridFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -133,6 +135,27 @@ namespace cafe_cafe
             this.datagridFood.Size = new System.Drawing.Size(431, 493);
             this.datagridFood.TabIndex = 5;
             this.datagridFood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridFood_CellClick);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "Tên sản phẩm";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "Đơn giá";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
             // 
             // label1
             // 
@@ -228,6 +251,7 @@ namespace cafe_cafe
             this.btnThemMon.TabIndex = 14;
             this.btnThemMon.Text = "Thêm món";
             this.btnThemMon.UseVisualStyleBackColor = true;
+            this.btnThemMon.Click += new System.EventHandler(this.btnThemMon_Click);
             // 
             // label4
             // 
@@ -237,24 +261,6 @@ namespace cafe_cafe
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Số lượng:";
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "Tên sản phẩm";
-            this.name.Name = "name";
-            // 
-            // price
-            // 
-            this.price.DataPropertyName = "price";
-            this.price.HeaderText = "Đơn giá";
-            this.price.Name = "price";
             // 
             // Main
             // 
