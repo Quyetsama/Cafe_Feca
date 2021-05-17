@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace cafe_cafe
         {
             InitializeComponent();
             LoadTable();
+            LoadCategory();
         }
 
         //void LoadAccount()
@@ -25,6 +27,50 @@ namespace cafe_cafe
 
         //    dataGridView1.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] {"admin"});
         //}
+
+
+        void LoadCategory()
+        {
+            // Lay danh sach loai san pham
+            List<Category> listCategory = new List<Category>();
+
+            string queryCategory = "select * from FoodCategory";
+
+            DataTable dataCategory = DataProvider.Instance.ExecuteQuery(queryCategory);
+
+            foreach(DataRow row in dataCategory.Rows)
+            {
+                Category category = new Category(row);
+                listCategory.Add(category);
+            }
+
+            cbbLoaiSanPham.DataSource = listCategory;
+            cbbLoaiSanPham.DisplayMember = "name";
+
+        }
+
+
+        void LoadFoodListByCategoryID(int id)
+        {
+            // Lay danh sach san pham theo loia san pham
+            List<Food> listFood = new List<Food>();
+
+            string queryFood = "select * from Food where idCategory = " + id;
+
+            DataTable dataFood = DataProvider.Instance.ExecuteQuery(queryFood);
+
+            foreach (DataRow row in dataFood.Rows)
+            {
+                Food food = new Food(row);
+                listFood.Add(food);
+            }
+
+
+            datagridFood.DataSource = dataFood;
+            datagridFood.Columns["idCategory"].Visible = false;
+
+        }
+
 
         void LoadTable()
         {
@@ -105,6 +151,8 @@ namespace cafe_cafe
             }
 
 
+            float totalPrice = 0;
+
             foreach(BillInfo item in listBillInfo)
             {
                 ListViewItem lvItem = new ListViewItem(item.NameFood.ToString());
@@ -112,8 +160,13 @@ namespace cafe_cafe
                 lvItem.SubItems.Add(item.Price.ToString());
                 lvItem.SubItems.Add(item.TotalPrice.ToString());
 
+                totalPrice += item.TotalPrice;
+
                 lvBill.Items.Add(lvItem);
             }
+
+            CultureInfo culture = new CultureInfo("vi-VN");
+            txtTotalPrice.Text = totalPrice.ToString("c", culture);
 
 
 
@@ -146,6 +199,43 @@ namespace cafe_cafe
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void cbbLoaiSanPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            ComboBox cb = sender as ComboBox;
+
+            if(cb.SelectedItem == null)
+            {
+                return;
+            }
+
+
+            Category selected = cb.SelectedItem as Category;
+
+            id = selected.ID;
+
+            LoadFoodListByCategoryID(id);
+        }
+
+        private void datagridFood_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if(datagridFood.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            //{
+            //    datagridFood.CurrentRow.Selected = true;
+            //    txtFood.Text = datagridFood.Rows[e.RowIndex].Cells["name"].FormattedValue.ToString();
+            //}
+
+            try
+            {
+                datagridFood.CurrentRow.Selected = true;
+                txtFood.Text = datagridFood.Rows[e.RowIndex].Cells["name"].FormattedValue.ToString();
+            }
+            catch(Exception ex)
+            {
+            }
         }
     }
 }

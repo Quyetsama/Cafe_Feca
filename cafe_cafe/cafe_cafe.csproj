@@ -88,7 +88,10 @@
   <ItemGroup>
     <Compile Include="Bill.cs" />
     <Compile Include="BillInfo.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DataRows.cs" />
+    <Compile Include="Food.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
