@@ -15,8 +15,8 @@ namespace cafe_cafe
     public partial class Main : Form
     {
 
-        public static int IDTable = 0;
-        public static string IDFOOD = "";
+        public int IDTable = 0;
+        public string IDFOOD = "";
 
         public Main()
         {
@@ -81,7 +81,6 @@ namespace cafe_cafe
             lvTable.Items.Clear();
 
             List<Table> tablelist = new List<Table>();
-
             DataTable data = DataProvider.Instance.ExecuteQuery("exec USP_GetTableList");
 
 
@@ -147,7 +146,7 @@ namespace cafe_cafe
             List<BillInfo> listBillInfo = new List<BillInfo>();
             //label1.Text = billID.ToString();
 
-            string query = "select f.name, bi.count, f.price, f.price*bi.count as totalPrice from Bill as b, BillInfo as bi, Food as f where bi.idBill = b.id and bi.idFood = f.id and b.status = 0 and b.idTable = " + id;
+            string query = "select f.id, f.name, bi.count, f.price, f.price*bi.count as totalPrice from Bill as b, BillInfo as bi, Food as f where bi.idBill = b.id and bi.idFood = f.id and b.status = 0 and b.idTable = " + id;
             DataTable dataBillInfo = DataProvider.Instance.ExecuteQuery(query);
 
             foreach(DataRow row in dataBillInfo.Rows)
@@ -165,6 +164,8 @@ namespace cafe_cafe
                 lvItem.SubItems.Add(item.Count.ToString());
                 lvItem.SubItems.Add(item.Price.ToString());
                 lvItem.SubItems.Add(item.TotalPrice.ToString());
+               
+                lvItem.SubItems.Add(item.IdFood.ToString());
 
                 totalPrice += item.TotalPrice;
 
@@ -193,6 +194,14 @@ namespace cafe_cafe
             //    lvBill.Items.Add(lvItem);
             //}
 
+        }
+
+        private void lvBill_Click(object sender, EventArgs e)
+        {
+            string a = lvBill.SelectedItems[0].SubItems[0].Text;
+            string b = lvBill.SelectedItems[0].SubItems[4].Text;
+            txtFood.Text = a;
+            IDFOOD = b;
         }
 
         private void lvTable_Click(object sender, EventArgs e)
@@ -251,6 +260,12 @@ namespace cafe_cafe
 
         private void btnThemMon_Click(object sender, EventArgs e)
         {
+
+            if(IDTable == 0 || txtFood.Text == "")
+            {
+                return;
+            }
+
             // get bill chưa thanh toan
             DataTable dataBill = DataProvider.Instance.ExecuteQuery("select * from Bill where idTable = " + IDTable + "and status = 0");
 
@@ -272,24 +287,33 @@ namespace cafe_cafe
             {
                 // Insert Bill
                 DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[]{ IDTable });
-
+                label5.Text = IDTable.ToString();
                 //lay id cuoi cung de insert billinfo
                 int idBill = (int)DataProvider.Instance.ExecuteScalar("SELECT TOP 1 * FROM Bill ORDER BY id DESC");
                 
 
                 // Insert BillInfo
                 DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillInfo @idBill , @idFood , @count , @idTable", new object[]{idBill, idFood , count, IDTable });
+                LoadTable();
 
-                
             }
             else
             {
                 DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillInfo @idBill , @idFood , @count , @idTable", new object[]{billID, idFood, count, IDTable });
+
             }
 
-            LoadTable();
+            
+            
             showBill(IDTable);
+            // check so luong trong bill sau khi load lai bill de load lai table
+            if (lvBill.Items.Count == 0)
+            {
+                LoadTable();
+            }
 
         }
+
+        
     }
 }

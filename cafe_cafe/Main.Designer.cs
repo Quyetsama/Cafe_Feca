@@ -52,6 +52,7 @@ namespace cafe_cafe
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.btnThemMon = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridFood)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -95,6 +96,7 @@ namespace cafe_cafe
             this.lvBill.TabIndex = 4;
             this.lvBill.UseCompatibleStateImageBehavior = false;
             this.lvBill.View = System.Windows.Forms.View.Details;
+            this.lvBill.Click += new System.EventHandler(this.lvBill_Click);
             // 
             // columnHeader1
             // 
@@ -262,11 +264,21 @@ namespace cafe_cafe
             this.label4.TabIndex = 15;
             this.label4.Text = "Số lượng:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(674, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "label5";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1396, 599);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnThemMon);
             this.Controls.Add(this.numericUpDown1);
@@ -313,6 +325,7 @@ namespace cafe_cafe
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.Label label5;
     }
 }
 

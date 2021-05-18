@@ -13,9 +13,11 @@ namespace cafe_cafe
         private int count;
         private float price;
         private float totalPrice;
+        private int idFood;
 
-        public BillInfo(string name, int count, float price, float totalPrice = 0)
+        public BillInfo(int id, string name, int count, float price, float totalPrice = 0)
         {
+            this.idFood = id;
             this.nameFood = name;
             this.count = count;
             this.price = price;
@@ -24,6 +26,7 @@ namespace cafe_cafe
 
         public BillInfo(DataRow row)
         {
+            this.idFood = (int)row["id"];
             this.nameFood = row["name"].ToString();
             this.count = (int)row["count"];
             this.price = (float)Convert.ToDouble(row["price"].ToString());
@@ -35,6 +38,7 @@ namespace cafe_cafe
         public float Price { get => price; set => price = value; }
         public float TotalPrice { get => totalPrice; set => totalPrice = value; }
         public string NameFood { get => nameFood; set => nameFood = value; }
+        public int IdFood { get => idFood; set => idFood = value; }
 
 
 
